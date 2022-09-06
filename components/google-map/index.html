@@ -14,10 +14,30 @@
 
     <script>
     function myMap() {
-    var mapProp= {
-    center:new google.maps.LatLng(51.508742,-0.120850),
-    zoom:5,
+        var mapProp= {
+        center:new google.maps.LatLng(51.508742,-0.120850),
+        zoom:5,
     };
+
+    function addMarker(coords) {
+        var marker = new google.maps.Marker({
+            position: coords,
+            map: map,
+            icon: "img-link"
+        })
+    }
+    //check for customicon
+    if(props.iconImage) {
+        marker.setIcon(props.iconImage);
+    }
+    if(props.content) {
+        var infoWindow = new google/maps.InfoWindow ({
+            content: props.content
+        })
+    }
+    marker.addEventListener('click', function() {
+        infoWindow.open("")
+    })
     var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
     }
     </script>
